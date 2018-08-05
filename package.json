@@ -1,0 +1,26 @@
+{
+  "name": "quote-generator",
+  "version": "1.0.0",
+  "description": "random quote app generator",
+  "main": "index.js",
+  "scripts": {
+    "serve": "browser-sync start --server --files 'index.html'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jesuodz/quote-generator.git"
+  },
+  "keywords": [
+    "javascript",
+    "freecodecamp"
+  ],
+  "author": "Jesus Ordosgoitty",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jesuodz/quote-generator/issues"
+  },
+  "homepage": "https://github.com/jesuodz/quote-generator#readme",
+  "dependencies": {
+    "browser-sync": "^2.24.6"
+  }
+}
