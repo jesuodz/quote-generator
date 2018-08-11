@@ -1,5 +1,6 @@
 const e = React.createElement;
-const url = 'http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en&callback=?';
+const url = 'https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en';
+const urlCORS = 'https://cors-anywhere.herokuapp.com/' + url;
 
 class QuoteText extends React.Component {
     constructor() {
@@ -12,12 +13,13 @@ class QuoteText extends React.Component {
 }
 
 class QuoteAuthor extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            author: 'Lorem'
+            author: this.props.children.author
         };
     }
+    
     render() {
         return e('span', {className: 'author'}, this.state.author);
     }
@@ -47,14 +49,29 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            quote: null,
-            author: null
+            text: "please ",
+            author: "wait"
         }
+        }
+
+    componentDidMount() {
+        this.getData();
     }
+
+    getData() {
+        fetch(urlCORS)
+            .then((response) => response.json())
+            .then((data) =>
+                this.setState({
+                    text: data.quoteText,
+                    author: data.quoteAuthor
+                }))
+            .catch((error) => { console.log(error) });
+    };
 
     render() {
         return [
-            e(QuoteText, {key: "quote"} , {text: 'Here goes a quote'}), 
+            e(QuoteText, {key: "quote"} , {text: this.state.text}), 
             e(QuoteAuthor, {key: "author"}, {author: this.state.author}),
             e(newQuoteBtn, {key: "new-quote"}, {newQuote: 'New Quote'}),
             e(tweetQuoteBtn, {key: "tweet"}, {tweetQuote: 'Tweet!'})
