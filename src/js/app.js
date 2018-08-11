@@ -1,9 +1,11 @@
 const e = React.createElement;
 
 class QuoteText extends React.Component {
-    constructor() {
-        super();
-        this.state = {text: 'Lorem'};
+    constructor(props) {
+        super(props);
+        this.state = {
+            text: props.children.text
+        }
     }
     render() {
         return e('span', {className: 'text'}, this.state.text);
@@ -41,6 +43,13 @@ class tweetQuoteBtn extends React.Component {
 }
 
 class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            text: "please ",
+            author: "wait"
+        }
+    }
     render() {
         return [
             e(QuoteText, {key: "quote"} , {text: 'Here goes a quote'}), 
