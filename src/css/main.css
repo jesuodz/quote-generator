@@ -1,8 +1,28 @@
 body {
     font-family: 'Montserrat', sans-serif;
+    background-color: #000;
 }
 
 .quote-box .text,
 .quote-box .author {
     font-family: 'Raleway', sans-serif;
+}
+
+/* .quote-box {
+    width: 100%;
+} */
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 100%;
+    background-color: #fff;
+}
+
+@media only screen and (min-device-width: 480px) {
+    .wrapper {
+        width: 80%;
+    }
 }
