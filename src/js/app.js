@@ -7,7 +7,8 @@ class App extends React.Component {
         super(props);
         this.state = {
             text: null,
-            author: null
+            author: null,
+            title: 'Quote Generator'
         }
     }
     
@@ -28,6 +29,7 @@ class App extends React.Component {
 
     render() {
         return [
+            e('header', {key: 'header', className: 'title-header'}, this.state.title),
             e('span', {key: 'quote', className: 'text'}, this.state.text),
             e('span', {key: 'author', className: 'author'}, this.state.author),
             e('button', {key: 'new-quote', className: 'new-quote'}, 'New quote'),
