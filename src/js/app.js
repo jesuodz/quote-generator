@@ -16,14 +16,19 @@ class App extends React.Component {
     }
 
     getData() {
-        fetch(urlCORS)
-            .then((response) => response.json())
-            .then((data) =>
+        fetch(urlCORS, {
+            headers : {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            }
+        })
+        .then((response) => response.json())
+        .then((data) =>
                 this.setState({
                     text: data.quoteText,
                     author: data.quoteAuthor
-                }))
-            .catch((error) => { console.log(error) });
+        }))
+        .catch((error) => { console.log(error) });
     };
 
     newQuote() {
