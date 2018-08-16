@@ -11,7 +11,7 @@ class App extends React.Component {
         }
     }
     
-    componentDidMount() {
+    componentWillMount() {
         this.getData();
     }
 
@@ -26,11 +26,15 @@ class App extends React.Component {
             .catch((error) => { console.log(error) });
     };
 
+    newQuote() {
+        this.getData();
+    }
+
     render() {
         return [
             e('span', {key: 'quote', className: 'text'}, this.state.text),
             e('span', {key: 'author', className: 'author'}, this.state.author),
-            e('button', {key: 'new-quote', className: 'new-quote'}, 'New quote'),
+            e('button', {key: 'new-quote', className: 'new-quote', onClick: this.newQuote.bind(this)}, 'New Quote'),
             e('a', {key: 'tweet-quote', className: 'tweet-quote'}, this.state.tweetQuote)
         ];
     }
