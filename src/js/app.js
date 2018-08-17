@@ -10,7 +10,10 @@ class App extends React.Component {
             author: null,
             title: 'Quote Generator',
             attr: 'Made by ',
-            name: 'Jesus Ordosgoitty'
+            name: 'Jesus Ordosgoitty',
+            color : {
+                color: 'black'
+            }
         }
     }
     
@@ -29,13 +32,28 @@ class App extends React.Component {
         .then((data) =>
                 this.setState({
                     text: data.quoteText,
-                    author: data.quoteAuthor
+                    author: data.quoteAuthor,
+                    color: {
+                        color: this.randomColor()
+                    }
         }))
         .catch((error) => { console.log(error) });
     };
 
     newQuote() {
         this.getData();
+    }
+
+    randomColor() {
+        let colors = ['#01579b', '#b0bec5', '#283593', '#757575', '#3e2723', '#795548', '#ff7043', '#bf360c', 
+                        '#ff6d00', '#ff9800', '#ffa000', '#ffc400', '#ffd600', '#ffeb3b', '#cddc39', '#006064',
+                        '#8bc34a', '#64dd17', '#43a047', '#f50057', '#00897b', '#00bfa5', '#4dd0e1', '#00e5ff',
+                        '#455a64', '#9c27b0', '#448aff', '#1976d2', '#212121', '#5c6bc0', '#4527a0', '#6200ea',
+                        '#e040fb', '#00b0ff', '#ad1457', '#00c853', '#c62828', '#ef5350', '#263238', '#9e9d24'];
+
+        let colorNum = Math.floor(Math.random() * 40);           
+
+        return colors[colorNum];
     }
 
     tweetQuote() {
@@ -48,6 +66,7 @@ class App extends React.Component {
     }
 
     render() {
+        // console.log(this.randomColor());
         return [
             // Render header
             e('header', {key: 'header',  className: 'title-header'}, [
@@ -57,8 +76,8 @@ class App extends React.Component {
             // Render app components
             e('span', {key: 'quote', className: 'text'}, this.state.text),
             e('span', {key: 'author', className: 'author'}, this.state.author),
-            e('button', {key: 'new-quote', className: 'new-quote-btn', onClick: this.newQuote.bind(this)}, 'New Quote'),
-            e('a', {key: 'tweet-quote', className: 'button', title: 'Tweet this quote', onClick: this.tweetQuote.bind(this)}, 
+            e('button', {key: 'new-quote', className: 'new-quote-btn', onClick: this.newQuote.bind(this), style: this.state.color}, 'New Quote'),
+            e('a', {key: 'tweet-quote', className: 'button', title: 'Tweet this quote', onClick: this.tweetQuote.bind(this), style: this.state.color}, 
                 e('i', {key: 'icon', className: 'fab fa-twitter'}, null)    
             ),
 
@@ -66,7 +85,7 @@ class App extends React.Component {
             e('footer', {key: 'footer'},[
                 e('p', {key:'attr', className:'attr' }, [
                     this.state.attr,
-                    e('a', {key: 'link', href:"https://jesuodz.me"}, this.state.name)
+                    e('a', {key: 'link', href:"https://jesuodz.me", target: '_blank', style: this.state.color}, this.state.name)
                 ])
             ])
         ];
