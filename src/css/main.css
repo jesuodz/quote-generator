@@ -6,3 +6,16 @@ body {
 .quote-box .author {
     font-family: 'Raleway', sans-serif;
 }
+
+.new-quote-btn {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    background: none;
+    box-shadow: none;
+    border: none;
+    outline: none;
+}
+.button {
+    padding: .46em;
+    border-radius: 0.3em;
+}

@@ -57,7 +57,7 @@ class App extends React.Component {
             // Render app components
             e('span', {key: 'quote', className: 'text'}, this.state.text),
             e('span', {key: 'author', className: 'author'}, this.state.author),
-            e('button', {key: 'new-quote', className: 'new-quote', onClick: this.newQuote.bind(this)}, 'New Quote'),
+            e('button', {key: 'new-quote', className: 'new-quote-btn', onClick: this.newQuote.bind(this)}, 'New Quote'),
             e('a', {key: 'tweet-quote', className: 'button', title: 'Tweet this quote', onClick: this.tweetQuote.bind(this)}, 
                 e('i', {key: 'icon', className: 'fab fa-twitter'}, null)    
             ),
