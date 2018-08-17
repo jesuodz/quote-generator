@@ -3,15 +3,6 @@ body {
     background-color: #000;
 }
 
-.quote-box .text,
-.quote-box .author {
-    font-family: 'Raleway', sans-serif;
-}
-
-/* .quote-box {
-    width: 100%;
-} */
-
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -19,6 +10,24 @@ body {
     justify-content: center;
     width: 100%;
     background-color: #fff;
+}
+
+.quote-box .text,
+.quote-box .author {
+    font-family: 'Raleway', sans-serif;
+}
+
+.new-quote-btn {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    background: none;
+    box-shadow: none;
+    border: none;
+    outline: none;
+}
+.button {
+    padding: .46em;
+    border-radius: 0.3em;
 }
 
 @media only screen and (min-device-width: 480px) {
