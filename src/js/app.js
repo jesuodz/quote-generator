@@ -10,7 +10,7 @@ class App extends React.Component {
             author: null,
             title: 'Quote Generator',
             attr: 'Made by ',
-            name: 'Jesus Ordosgoitty',
+            name: 'jesuodz',
             color : {
                 color: 'black'
             },
@@ -57,13 +57,12 @@ class App extends React.Component {
     }
 
     randomColor() {
-        let colors = ['#01579b', '#b0bec5', '#283593', '#757575', '#3e2723', '#795548', '#ff7043', '#bf360c', 
-                        '#ff6d00', '#ff9800', '#ffa000', '#ffc400', '#ffd600', '#ffeb3b', '#cddc39', '#006064',
-                        '#8bc34a', '#64dd17', '#43a047', '#f50057', '#00897b', '#00bfa5', '#4dd0e1', '#00e5ff',
-                        '#455a64', '#9c27b0', '#448aff', '#1976d2', '#212121', '#5c6bc0', '#4527a0', '#6200ea',
-                        '#e040fb', '#00b0ff', '#ad1457', '#00c853', '#c62828', '#ef5350', '#263238', '#9e9d24'];
+        let colors = ['#263238', '#212121', '#3e2723', '#bf360c', '#e65100',
+                    '#ff6f00', '#ffd600', '#827717', '#33691e', '#1b5e20',
+                    '#004d40', '#006064', '#01579b', '#0d47a1', '#1a237e',
+                    '#311b92', '#4a148c', '#880e4f', '#b71c1c', '#2962ff'];
 
-        let colorNum = Math.floor(Math.random() * 40);           
+        let colorNum = Math.floor(Math.random() * 20);           
         let randomColor = colors[colorNum];
 
         return randomColor;
@@ -83,19 +82,19 @@ class App extends React.Component {
         document.querySelector('body').style.backgroundColor = this.state.color['color'];
         return ([
             // Render header
-            e('header', {key: 'header', className: 'title-header'}, 
-                e('h1', {key: 'title', className: 'title'}, this.state.title)
+            e('header', {key: 'header', className: 'header'}, 
+                e('h1', {key: 'title', className: 'title-header'}, this.state.title)
             ),
 
             e('span', {key: 'quote', className: 'text'}, this.state.text),
-            e('span', {key: 'author', className: 'author'}, this.state.author),
+            e('span', {key: 'author', className: 'author'}, "— " + this.state.author),
             e('button', {key: 'new-quote', className: 'new-quote-btn', onClick: this.newQuote.bind(this), style: this.state.backgroundColor}, 'New Quote'),
             e('a', {key: 'tweet-quote', className: 'twitter-btn', title: 'Tweet this quote', onClick: this.tweetQuote.bind(this), style: this.state.backgroundColor}, 
                 e('i', {key: 'icon', className: 'fab fa-twitter'}, null)    
             ),
 
             // Render footer
-            e('footer', {key: 'footer'},[
+            e('footer', {key: 'footer', className: 'footer'},[
                 e('p', {key:'attr', className:'attr' }, [
                     this.state.attr,
                     e('a', {key: 'link', href:"https://jesuodz.me", target: '_blank', style: this.state.color}, this.state.name)
