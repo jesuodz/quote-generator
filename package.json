@@ -6,9 +6,10 @@
   "scripts": {
     "uglifyjs": "mkdirp dist/js && uglifyjs src/js/app.js -o dist/js/app.js",
     "uglifycss": "mkdirp dist/css && uglifycss src/css/main.css --output dist/css/main.css",
-    "favicon": "mkdirp dist/favicon && cp src/favicon/*.ico dist/favicon/",
-    "build": "npm run uglifyjs && npm run uglifycss && cp src/index.html dist && npm run favicon",
-    "start": "browser-sync start -s --files ./**/*",
+    "static-files": "mkdirp dist/favicon && cp src/favicon/*.ico dist/favicon/ && cp src/index.html dist",
+    "build": "npm run uglifyjs && npm run uglifycss && npm run static-files",
+    "browser-sync": "browser-sync start -s --files ./dist/**/* --startPath ./src/index.html",
+    "start": "npm run build && npm run browser-sync",
     "deploy": "npm run build && gh-pages -d dist"
   },
   "repository": {
