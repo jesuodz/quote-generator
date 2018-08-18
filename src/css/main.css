@@ -78,12 +78,14 @@ body {
     opacity: 1;
 }
 .new-quote-btn:hover,
-.twitter-btn:hover {
+.twitter-btn:hover,
+.link:hover {
     opacity: 0.7;
 }
 
 .twitter-btn,
 .new-quote-btn,
+.link,
 body {
     transition: 0.8s ease;
 }
@@ -96,10 +98,15 @@ body {
 /*
     RESPONSIVE TAGS
 */
+@media screen and (min-width: 320px) {
+    .outer-quote-box {
+        width: 85%;
+    }
+}
 @media screen and (min-width: 480px) {
     .outer-quote-box {
         padding: 1.5em; 
-        width: 80%;
+        width: 77%;
     }
     .header {
         padding-bottom: 0.8em;
@@ -109,7 +116,7 @@ body {
 @media screen and (min-width: 660px) {
     .outer-quote-box {
         padding: 1.8em 2em 1.8em 2em; 
-        width: 80%;
+        width: 70%;
     }
     .footer .attr {
         font-size: 0.9em;
@@ -122,7 +129,7 @@ body {
 }
 @media screen and (min-width: 840px) {
     .outer-quote-box {
-        width: 65%;
+        width: 63%;
     }
     .header .title-header {
         font-size: 1.6em;
@@ -132,7 +139,7 @@ body {
 @media screen and (min-width: 1020px) {
     .outer-quote-box {
         padding: 2em;
-        width: 50%;
+        width: 56%;
     }
     .header {
         padding-bottom: 0.9em;
@@ -146,6 +153,6 @@ body {
 
 @media screen and (min-width: 1020px) {
     .outer-quote-box {
-        width: 45%;
+        width: 49%;
     }
 }

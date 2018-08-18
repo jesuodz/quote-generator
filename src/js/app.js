@@ -97,7 +97,7 @@ class App extends React.Component {
             e('footer', {key: 'footer', className: 'footer'},[
                 e('p', {key:'attr', className:'attr' }, [
                     this.state.attr,
-                    e('a', {key: 'link', href:"https://jesuodz.me", target: '_blank', style: this.state.color}, this.state.name)
+                    e('a', {key: 'link', className: 'link', href:"https://jesuodz.me", target: '_blank', style: this.state.color}, this.state.name)
                 ])
             ])
         ]);
