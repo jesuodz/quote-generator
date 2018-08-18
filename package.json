@@ -8,7 +8,7 @@
     "uglifycss": "mkdirp dist/css && uglifycss src/css/main.css --output dist/css/main.css",
     "static-files": "mkdirp dist/favicon && cp src/favicon/*.ico dist/favicon/ && cp src/index.html dist",
     "build": "npm run uglifyjs && npm run uglifycss && npm run static-files",
-    "browser-sync": "browser-sync start -s --files ./dist/**/* --startPath ./src/index.html",
+    "browser-sync": "browser-sync start -s --files ./dist/**/* --startPath ./dist/index.html",
     "start": "npm run build && npm run browser-sync",
     "deploy": "npm run build && gh-pages -d dist"
   },
