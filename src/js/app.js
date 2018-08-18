@@ -36,8 +36,8 @@ class App extends React.Component {
                     color: {
                         color: this.randomColor()
                     }
-        }))
-        .catch((error) => { console.log(error) });
+                }), 
+        ).catch((error) => { console.log(error) });
     };
 
     newQuote() {
@@ -52,8 +52,9 @@ class App extends React.Component {
                         '#e040fb', '#00b0ff', '#ad1457', '#00c853', '#c62828', '#ef5350', '#263238', '#9e9d24'];
 
         let colorNum = Math.floor(Math.random() * 40);           
+        let randomColor = colors[colorNum];
 
-        return colors[colorNum];
+        return randomColor;
     }
 
     tweetQuote() {
@@ -66,6 +67,7 @@ class App extends React.Component {
     }
 
     render() {
+        document.querySelector('body').style.backgroundColor = this.state.color['color'];
         return ([
             // Render header
             e('header', {key: 'header', className: 'title-header'}, 
