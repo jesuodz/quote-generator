@@ -2,9 +2,14 @@
   "name": "quote-generator",
   "version": "1.0.0",
   "description": "random quote app generator",
-  "main": "index.js",
+  "homepage": "https://jesuodz.github.io/quote-generator",
   "scripts": {
-    "serve": "browser-sync start -s --files ./**/*"
+    "uglifyjs": "mkdirp dist/js && uglifyjs src/js/app.js -o dist/js/app.js",
+    "uglifycss": "mkdirp dist/css && uglifycss src/css/main.css --output dist/css/main.css",
+    "favicon": "mkdirp dist/favicon && cp src/favicon/*.ico dist/favicon/",
+    "build": "npm run uglifyjs && npm run uglifycss && cp src/index.html dist && npm run favicon",
+    "start": "browser-sync start -s --files ./**/*",
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -19,8 +24,13 @@
   "bugs": {
     "url": "https://github.com/jesuodz/quote-generator/issues"
   },
-  "homepage": "https://github.com/jesuodz/quote-generator#readme",
   "dependencies": {
     "browser-sync": "^2.24.6"
+  },
+  "devDependencies": {
+    "gh-pages": "^1.2.0",
+    "mkdirp": "^0.5.1",
+    "uglify-es": "^3.3.9",
+    "uglifycss": "0.0.29"
   }
 }
