@@ -80,6 +80,7 @@ class App extends React.Component {
     render() {
         // Update backround color
         document.querySelector('body').style.backgroundColor = this.state.color['color'];
+        let author = (this.state.author === "") ? "Anonymous" : this.state.author;
         return ([
             // Render header
             e('header', {key: 'header', className: 'header'}, 
@@ -87,7 +88,7 @@ class App extends React.Component {
             ),
 
             e('span', {key: 'quote', className: 'text'}, this.state.text),
-            e('span', {key: 'author', className: 'author'}, "— " + this.state.author),
+            e('span', {key: 'author', className: 'author'}, "— " + author),
             e('button', {key: 'new-quote', className: 'new-quote-btn', onClick: this.newQuote.bind(this), style: this.state.backgroundColor}, 'New Quote'),
             e('a', {key: 'tweet-quote', className: 'twitter-btn', title: 'Tweet this quote', onClick: this.tweetQuote.bind(this), style: this.state.backgroundColor}, 
                 e('i', {key: 'icon', className: 'fab fa-twitter'}, null)    
