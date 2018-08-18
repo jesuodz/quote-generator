@@ -13,6 +13,9 @@ class App extends React.Component {
             name: 'Jesus Ordosgoitty',
             color : {
                 color: 'black'
+            },
+            backgroundColor: {
+                backgroundColor: 'black'
             }
         }
     }
@@ -22,6 +25,9 @@ class App extends React.Component {
     }
 
     getData() {
+        // Get random color
+        let color = this.randomColor();
+
         fetch(urlCORS, {
             headers : {
                 'Content-type': 'application/json',
@@ -30,14 +36,20 @@ class App extends React.Component {
         })
         .then((response) => response.json())
         .then((data) =>
-                this.setState({
-                    text: data.quoteText,
-                    author: data.quoteAuthor,
-                    color: {
-                        color: this.randomColor()
-                    }
-                }), 
-        ).catch((error) => { console.log(error) });
+            this.setState({
+                text: data.quoteText,
+                author: data.quoteAuthor,
+                color: {
+                    'color': color          // Change colors
+                },
+                backgroundColor: {
+                    backgroundColor: color
+                }
+            }) 
+        )
+        .catch((error) => {
+            console.log(error);
+        });
     };
 
     newQuote() {
@@ -67,6 +79,7 @@ class App extends React.Component {
     }
 
     render() {
+        // Update backround color
         document.querySelector('body').style.backgroundColor = this.state.color['color'];
         return ([
             // Render header
@@ -76,8 +89,8 @@ class App extends React.Component {
 
             e('span', {key: 'quote', className: 'text'}, this.state.text),
             e('span', {key: 'author', className: 'author'}, this.state.author),
-            e('button', {key: 'new-quote', className: 'new-quote-btn', onClick: this.newQuote.bind(this), style: this.state.color}, 'New Quote'),
-            e('a', {key: 'tweet-quote', className: 'button', title: 'Tweet this quote', onClick: this.tweetQuote.bind(this), style: this.state.color}, 
+            e('button', {key: 'new-quote', className: 'new-quote-btn', onClick: this.newQuote.bind(this), style: this.state.backgroundColor}, 'New Quote'),
+            e('a', {key: 'tweet-quote', className: 'twitter-btn', title: 'Tweet this quote', onClick: this.tweetQuote.bind(this), style: this.state.backgroundColor}, 
                 e('i', {key: 'icon', className: 'fab fa-twitter'}, null)    
             ),
 
