@@ -7,16 +7,20 @@ body {
     background-color: #000;
     margin: 0;
 }
-
+#app {
+    height: inherit;
+    width: 100%;
+}
 .wrapper {
-    height: 100%;
+    height: inherit;
+    width: inherit;
     display: flex;
     justify-content: center;
     align-items: center; 
     padding: 0;
     margin: 0;
 }
-.outer-quote-box {
+.quote-box {
     background-color: #fff;
     border-radius: 6px;
     padding: 1em;
@@ -99,12 +103,12 @@ body {
     RESPONSIVE TAGS
 */
 @media screen and (min-width: 320px) {
-    .outer-quote-box {
+    .quote-box {
         width: 85%;
     }
 }
 @media screen and (min-width: 480px) {
-    .outer-quote-box {
+    .quote-box {
         padding: 1.5em; 
         width: 77%;
     }
@@ -114,7 +118,7 @@ body {
     }
 }
 @media screen and (min-width: 660px) {
-    .outer-quote-box {
+    .quote-box {
         padding: 1.8em 2em 1.8em 2em; 
         width: 70%;
     }
@@ -128,7 +132,7 @@ body {
     }
 }
 @media screen and (min-width: 840px) {
-    .outer-quote-box {
+    .quote-box {
         width: 63%;
     }
     .header .title-header {
@@ -137,7 +141,7 @@ body {
     }
 }
 @media screen and (min-width: 1020px) {
-    .outer-quote-box {
+    .quote-box {
         padding: 2em;
         width: 56%;
     }
@@ -152,7 +156,7 @@ body {
 }
 
 @media screen and (min-width: 1020px) {
-    .outer-quote-box {
+    .quote-box {
         width: 49%;
     }
 }

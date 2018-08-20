@@ -80,59 +80,63 @@ class App extends React.Component {
 
     render() {
         // Update backround color
-        document.querySelector('body').style.backgroundColor = this.state.color['color'];
         let author = (this.state.author === "") ? "Anonymous" : this.state.author;
-        return ([
-            // Render header
-            e('header', {key: 'header', className: 'header'}, 
-                e('h1', {key: 'title', className: 'title-header'}, this.state.title)
-            ),
 
-            // Render quote elements
-            e('span', {key: 'quote', className: 'text'}, this.state.text),
-            e('span', {key: 'author', className: 'author'}, "— " + author),
+        return (
+            e('section', {key: 'appWrapper', className: 'wrapper', style: this.state.backgroundColor},
+                e('section', {key: 'quote-box', className: 'quote-box'}, [
+                    // Render header
+                    e('header', {key: 'header', className: 'header'}, 
+                    e('h1', {key: 'title', className: 'title-header'}, this.state.title)
+                    ),
 
-            // Render buttons
-            e('button', {   key: 'new-quote', 
-                            className: 'new-quote-btn', 
-                            onClick: this.newQuote.bind(this), 
+                    // Render quote elements
+                    e('span', {key: 'quote', className: 'text'}, this.state.text),
+                    e('span', {key: 'author', className: 'author'}, "— " + author),
+
+                    // Render buttons
+                    e('button', {   key: 'new-quote', 
+                                className: 'new-quote-btn', 
+                                onClick: this.newQuote.bind(this), 
+                                style: this.state.backgroundColor
+                            }, 
+                            'New Quote'
+                        ),
+                    e('a', {    key: 'tweet-quote', 
+                            className: 'twitter-btn', 
+                            title: 'Tweet this quote', 
+                            onClick: this.tweetQuote.bind(this), 
                             style: this.state.backgroundColor
-                        }, 
-                        'New Quote'
-                    ),
-            e('a', {    key: 'tweet-quote', 
-                        className: 'twitter-btn', 
-                        title: 'Tweet this quote', 
-                        onClick: this.tweetQuote.bind(this), 
-                        style: this.state.backgroundColor
-                    },  
-                        // Element <i> inside anchor
-                        e('i', {key: 'icon', className: 'fab fa-twitter'}, null)
-                    ),
+                        },  
+                            // Element <i> inside anchor
+                            e('i', {key: 'icon', className: 'fab fa-twitter'}, null)
+                        ),
 
-            // Render footer or
-            // "Create anchor elem inside p elem inside footer elem"
-            e('footer', {   key: 'footer', 
-                            className: 'footer'
-                        },
-                        e('p', {    key:'attr',
-                                    className:'attr'
-                                }, [ // String followed by an anchor element
-                                    this.state.attr,
-                                    e('a', {    key: 'link',
-                                                className: 'link',
-                                                href:"https://jesuodz.me",
-                                                target: '_blank',
-                                                style: this.state.color
-                                            }, 
-                                            this.state.name
-                                        )
-                                    ]        
-                            )
-                )
-        ]);
+                    // Render footer or
+                    // "Create anchor elem inside p elem inside footer elem"
+                    e('footer', {   key: 'footer', 
+                                className: 'footer'
+                            },
+                            e('p', {    key:'attr',
+                                        className:'attr'
+                                    }, [ // String followed by an anchor element
+                                        this.state.attr,
+                                        e('a', {    key: 'link',
+                                                    className: 'link',
+                                                    href:"https://jesuodz.me",
+                                                    target: '_blank',
+                                                    style: this.state.color
+                                                }, 
+                                                this.state.name
+                                            )
+                                        ]        
+                                )
+                    )
+                ])
+            )
+        );
     }
 }
 
-const app = document.getElementById('quote-box');
+const app = document.getElementById('app');
 ReactDOM.render( e(App), app );

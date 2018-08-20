@@ -8,8 +8,9 @@
     "uglifycss": "mkdirp dist/css && uglifycss src/css/main.css --output dist/css/main.css",
     "static-files": "mkdirp dist/favicon && cp src/favicon/*.ico dist/favicon/ && cp src/index.html dist",
     "build": "npm run uglifyjs && npm run uglifycss && npm run static-files",
-    "browser-sync": "browser-sync start -s --files ./dist/**/* --startPath ./dist/index.html",
-    "start": "npm run build && npm run browser-sync",
+    "browser-sync": "browser-sync start -s -w ./dist/**/* --startPath ./dist/index.html",
+    "watch": "onchange src/**/* -- npm run build",
+    "start": "concurrently \"npm run browser-sync\" \"npm run watch\"",
     "deploy": "npm run build && gh-pages -d dist"
   },
   "repository": {
@@ -26,11 +27,13 @@
     "url": "https://github.com/jesuodz/quote-generator/issues"
   },
   "dependencies": {
-    "browser-sync": "^2.24.6"
+    "browser-sync": "^2.24.6",
+    "concurrently": "^3.6.1"
   },
   "devDependencies": {
     "gh-pages": "^1.2.0",
     "mkdirp": "^0.5.1",
+    "onchange": "^4.1.0",
     "uglify-es": "^3.3.9",
     "uglifycss": "0.0.29"
   }
