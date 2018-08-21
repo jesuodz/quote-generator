@@ -90,7 +90,7 @@ body {
 .twitter-btn,
 .new-quote-btn,
 .link,
-body {
+.wrapper {
     transition: 0.8s ease;
 }
 .twitter-btn {
